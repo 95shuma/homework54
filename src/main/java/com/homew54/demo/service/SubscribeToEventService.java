@@ -5,9 +5,7 @@ import com.homew54.demo.model.SubscribeToEvent;
 import com.homew54.demo.repository.EventRepository;
 import com.homew54.demo.repository.SubscribeToEventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import springfox.documentation.annotations.ApiIgnore;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -21,7 +19,7 @@ public class SubscribeToEventService {
     @Autowired
     EventRepository er;
 
-    public SubscribeToEventDTO createSub(String eventId, String mail){
+    public String createSub(String eventId, String mail){
         if(ster.existsSubscribeToEventByEventIdAndMail(eventId,mail)){
             System.out.println("User already subscribe");
             return null;
@@ -38,7 +36,7 @@ public class SubscribeToEventService {
                     .dateRegistration(LocalDateTime.now())
                     .build();
             ster.save(subscribeToEvent);
-            return SubscribeToEventDTO.from(subscribeToEvent);
+            return subscribeToEvent.getId();
         }
     }
 

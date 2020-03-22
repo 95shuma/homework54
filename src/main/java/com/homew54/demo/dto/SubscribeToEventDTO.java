@@ -1,9 +1,7 @@
 package com.homew54.demo.dto;
 
-import com.homew54.demo.model.Event;
 import com.homew54.demo.model.SubscribeToEvent;
 import lombok.*;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.time.LocalDateTime;
 
@@ -22,6 +20,7 @@ public class SubscribeToEventDTO {
                 .id(ste.getId())
                 .eventId(ste.getEvent().getId())
                 .mail(ste.getMail())
+                .dateRegistration(ste.getDateRegistration())
                 .build();
     }
 }
